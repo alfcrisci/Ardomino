@@ -90,11 +90,11 @@ void loop(){
     SendTime = millis();
     // light_accum = readLightSensor();
     readTRHSensor();
-    temp_air= reading[0];
-    rh_air= reading[1];          
+    temp_air= tempsum;
+    rh_air= humsum;          
     // value to string conversion
     dtostrf(temp_air, 5, 2, temp_airBuffer);
-    dtostrf(temp_air, 5, 2, rh_airBuffer);
+    dtostrf(rh_air, 5, 2, rh_airBuffer);
     
     // define a fake time 
     sprintf(timestamp, "%d", random(1, 32000));    
@@ -122,7 +122,7 @@ void readTRHSensor(){
 
 //  DHT22 Air temperature humidity
 
-int chk = DHT.read22(DHT22_PIN);// read from sensors 
+int chk = DHT.read22(DHT22_PIN);// read from sensors of temperature and umidity
 
 switch (chk)//check
 {
@@ -256,7 +256,7 @@ void InvioWIFIHttp(char* jsonStringHead,char* jsonStringBody, int lungh)
 {
   Serial.println("Create POST request");
   
-  wifly.print("POST /api.php HTTP/1.0\r\n");
+  wifly.print("POST /cgi-bin/ardomino_collect.py HTTP/1.0\r\n");
   wifly.print("Content-Length: ");
   wifly.print(lungh);
   wifly.print("\r\n\r\n");
