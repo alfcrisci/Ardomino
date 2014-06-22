@@ -1,0 +1,1 @@
+http://149.139.8.55/cgi-bin/biomino_update.py?ID=FirenzeDuomo&tmp=17.1&rh=68.4&tmrt=-99.9&vv=-99.9&vdir=-99.9&vbatt=3.4&login=basic
